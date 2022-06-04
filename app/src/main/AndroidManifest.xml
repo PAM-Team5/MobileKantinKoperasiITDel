@@ -16,6 +16,12 @@
         android:theme="@style/Theme.KantinKorperasiITDel"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.koperasi.PembelianAdminKoperasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.koperasi.PemesananAdminKoperasiActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.kantin.EditAdminKantinActivity"
             android:exported="false" />
         <activity
@@ -25,13 +31,13 @@
             android:name=".activity.kantin.MainAdminKantinActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CreateAdminActivity"
+            android:name=".activity.koperasi.CreateAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.EditAdminActivity"
+            android:name=".activity.koperasi.EditAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainAdminActivity"
+            android:name=".activity.koperasi.MainAdminActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DetailProductActivity"

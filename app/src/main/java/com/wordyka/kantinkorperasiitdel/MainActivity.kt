@@ -3,16 +3,14 @@ package com.wordyka.kantinkorperasiitdel
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.wordyka.kantinkorperasiitdel.activity.LoginActivity
-import com.wordyka.kantinkorperasiitdel.activity.MainAdminActivity
+import com.wordyka.kantinkorperasiitdel.activity.koperasi.MainAdminActivity
 import com.wordyka.kantinkorperasiitdel.activity.MasukActivity
+import com.wordyka.kantinkorperasiitdel.activity.kantin.MainAdminKantinActivity
 import com.wordyka.kantinkorperasiitdel.fragment.AkunFragment
 import com.wordyka.kantinkorperasiitdel.fragment.HomeFragment
 import com.wordyka.kantinkorperasiitdel.fragment.KeranjangFragment
@@ -39,10 +37,14 @@ class MainActivity : AppCompatActivity() {
 
         sp = SharePref(this)
 
-        if(sp.getUser()?.role?.contains("admin", ignoreCase = true)!!) {
+        if(sp.getUser()?.role?.equals("admin-koperasi", ignoreCase = true)!!) {
             startActivity(Intent(this@MainActivity, MainAdminActivity::class.java))
-        }
-        if(sp.getUser()?.role?.contains("NULL", ignoreCase = true)!!) {
+        } else if(sp.getUser()?.role?.equals("admin-kantin", ignoreCase = true)!!) {
+            startActivity(Intent(this@MainActivity, MainAdminKantinActivity::class.java))
+        }else if(sp.getUser()?.role?.equals(null)!!) {
+            setContentView(R.layout.activity_main)
+            setUpBottomNav()
+        } else {
             setContentView(R.layout.activity_main)
             setUpBottomNav()
         }

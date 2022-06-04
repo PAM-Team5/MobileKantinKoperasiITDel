@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarAlwaysDrawVerticalTrack="true"
-    tools:context=".activity.MainAdminActivity">
+    tools:context=".activity.koperasi.MainAdminActivity">
 
 
     <RelativeLayout
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Data Produk"
+            android:text="Data Produk Koperasi"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -30,76 +30,151 @@
             android:id="@+id/btnAdminProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:backgroundTint="@color/white"
-            android:src="@drawable/person_white"
-            android:layout_alignParentRight="true"/>
+            android:src="@drawable/ic_baseline_login" />
 
 
     </RelativeLayout>
 
-
-
-    <TextView
-        android:id="@+id/tv_makanan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="16dp"
-        android:drawableLeft="@drawable/ic_baseline_info_24"
-        android:text="Produk Makanan"
-        android:textAllCaps="true"
-        android:textColor="@color/blue"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judul" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_produk_makanan"
-        android:layout_width="410dp"
-        android:layout_height="251dp"
-        android:layout_marginTop="12dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/tv_makanan"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="411dp"
+        android:layout_height="721dp"
+        app:layout_constraintTop_toBottomOf="@+id/judul"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:listitem="@layout/item_admin_product" />
+        tools:layout_editor_absoluteX="0dp">
 
-    <TextView
-        android:id="@+id/tv_minuman"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="16dp"
-        android:drawableLeft="@drawable/ic_baseline_info_24"
-        android:text="Produk Minuman"
-        android:textAllCaps="true"
-        android:textColor="@color/blue"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_produk_makanan" />
+        <LinearLayout
+            android:id="@+id/layoutAtas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnPesan"
+                    android:layout_marginRight="2dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#0105DA"
+                    android:text="Daftar Pemesanan"/>
+
+                <Button
+                    android:id="@+id/btnBeli"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:backgroundTint="#029F0A"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar Pembelian"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_makanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/ic_baseline_info_24"
+                android:text="Makanan"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutAtas" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_produk_minuman"
-        android:layout_width="410dp"
-        android:layout_height="246dp"
-        android:layout_marginTop="24dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddProduk"
-        app:layout_constraintTop_toBottomOf="@+id/tv_minuman"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/item_admin_product" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_produk_makanan"
+                android:layout_width="410dp"
+                android:layout_height="251dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/tv_makanan"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="1dp"
+                tools:listitem="@layout/item_admin_product" />
+
+            <TextView
+                android:id="@+id/tv_minuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/ic_baseline_info_24"
+                android:text="Minuman"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_produk_makanan" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_produk_minuman"
+                android:layout_width="410dp"
+                android:layout_height="246dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddProduk"
+                app:layout_constraintTop_toBottomOf="@+id/tv_minuman"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:listitem="@layout/item_admin_product" />
+
+            <TextView
+                android:id="@+id/tv_barang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/ic_baseline_info_24"
+                android:text="Barang"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_produk_minuman" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_produk_barang"
+                android:layout_width="410dp"
+                android:layout_height="246dp"
+                android:layout_marginTop="5dp"
+
+                android:layout_marginBottom="40dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddProduk"
+                app:layout_constraintTop_toBottomOf="@+id/tv_barang"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:listitem="@layout/item_admin_product" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddProduk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:src="@drawable/ic_baseline_add"
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

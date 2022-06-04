@@ -4,20 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import com.wordyka.kantinkorperasiitdel.MainActivity
 import com.wordyka.kantinkorperasiitdel.R
 import com.wordyka.kantinkorperasiitdel.activity.kantin.MainAdminKantinActivity
+import com.wordyka.kantinkorperasiitdel.activity.koperasi.MainAdminActivity
 import com.wordyka.kantinkorperasiitdel.app.ApiConfig
 import com.wordyka.kantinkorperasiitdel.helper.SharePref
 import com.wordyka.kantinkorperasiitdel.model.ResponModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -32,6 +29,11 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btn_login)
         btnLogin.setOnClickListener {
             login()
+        }
+
+        val btnDaftarUser = findViewById<TextView>(R.id.btn_daftarUser)
+        btnDaftarUser.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,RegisterActivity::class.java))
         }
     }
 
@@ -66,12 +68,14 @@ class LoginActivity : AppCompatActivity() {
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
-                    } else if(respon.user.role.equals("admin-kantin", ignoreCase = true)) {
+                    }
+                    if(respon.user.role.equals("admin-kantin", ignoreCase = true)) {
                         val intent =  Intent(this@LoginActivity, MainAdminKantinActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
-                    } else {
+                    }
+                    if(respon.user.role.equals(null)) {
                         val intent =  Intent(this@LoginActivity, MainActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)

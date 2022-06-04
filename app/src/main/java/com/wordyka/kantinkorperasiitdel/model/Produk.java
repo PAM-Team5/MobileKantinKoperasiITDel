@@ -15,4 +15,5 @@ public class Produk implements Serializable {
     public String gambar;
     public String deskripsi;
     public BigInteger hargaPcs;
+    public String role;
 }

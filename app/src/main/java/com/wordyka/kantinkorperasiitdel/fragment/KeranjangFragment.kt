@@ -1,5 +1,6 @@
 package com.wordyka.kantinkorperasiitdel.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.wordyka.kantinkorperasiitdel.R
+import com.wordyka.kantinkorperasiitdel.activity.LoginActivity
 import com.wordyka.kantinkorperasiitdel.adapter.AdapterPesan
 import com.wordyka.kantinkorperasiitdel.app.ApiConfig
 import com.wordyka.kantinkorperasiitdel.helper.SharePref
@@ -50,6 +52,15 @@ class KeranjangFragment : Fragment() {
         init(view)
         sp = SharePref(requireActivity())
         getPesan()
+
+        val btn_bayar = view.findViewById<TextView>(R.id.btn_bayar)
+        btn_bayar?.setOnClickListener {
+            if(!sp.getStatusLogin()) {
+                startActivity(Intent(activity, LoginActivity::class.java))
+            } else {
+                Toast.makeText(context, "Anda berhasil melakukan pembayaran", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 
         val btn_delete = view.findViewById<ImageView>(R.id.btn_delete)

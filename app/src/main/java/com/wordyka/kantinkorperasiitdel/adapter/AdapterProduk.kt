@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.wordyka.kantinkorperasiitdel.R
 import com.wordyka.kantinkorperasiitdel.activity.DetailProductActivity
-import com.wordyka.kantinkorperasiitdel.activity.EditAdminActivity
 import com.wordyka.kantinkorperasiitdel.model.Produk
 import java.text.NumberFormat
 import java.util.*
@@ -49,8 +48,6 @@ class AdapterProduk(var activity:Activity, var data:ArrayList<Produk>):RecyclerV
 
             activity.startActivity(intentActivityProduct)
         }
-
-
 
 
     }

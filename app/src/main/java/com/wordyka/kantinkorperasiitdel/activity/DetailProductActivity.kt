@@ -51,58 +51,65 @@ class DetailProductActivity : AppCompatActivity() {
 
 
         btn_pesan.setOnClickListener {
-            val dialog = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.modal_pemesanan,null)
-            val tv_pesan = dialogView.findViewById<EditText>(R.id.tv_pesan)
-            dialog.setView(dialogView)
-            dialog.setPositiveButton("Kirim", { dialogInterface: DialogInterface, i: Int -> })
-            dialog.setNegativeButton("Batal", { dialogInterface: DialogInterface, i: Int -> })
-            val customDialog = dialog.create()
-            customDialog.show()
+            if (sp.getStatusLogin() == false) {
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            } else {
+                val dialog = AlertDialog.Builder(this)
+                val dialogView = layoutInflater.inflate(R.layout.modal_pemesanan, null)
+                val tv_pesan = dialogView.findViewById<EditText>(R.id.tv_pesan)
+                dialog.setView(dialogView)
+                dialog.setPositiveButton("Kirim", { dialogInterface: DialogInterface, i: Int -> })
+                dialog.setNegativeButton("Batal", { dialogInterface: DialogInterface, i: Int -> })
+                val customDialog = dialog.create()
+                customDialog.show()
 
-            customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                customDialog.dismiss()
-                ApiConfig.instanceRetrofit.tambahPesan(
-                    produk.nama,
-                    produk.kategori,
-                    tv_pesan.text.toString().toInt(),
-                    produk.status,
-                    produk.gambar,
-                    produk.deskripsi,
-                    produk.hargaPcs * tv_pesan.text.toString().toBigInteger(),
-                    produk.id,
-                    sp.getUser()!!.id
-                ).enqueue(object :
-                    Callback<ResponModel> {
-                    override fun onResponse(
-                        call: Call<ResponModel>,
-                        response: Response<ResponModel>
-                    ) {
-                        val intent =  Intent(this@DetailProductActivity, MainActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                        finish()
-                        Toast.makeText(
-                            this@DetailProductActivity,
-                            "Pesanan Anda ditambah ke keranjang",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                    customDialog.dismiss()
+                    ApiConfig.instanceRetrofit.tambahPesan(
+                        produk.nama,
+                        produk.kategori,
+                        tv_pesan.text.toString().toInt(),
+                        produk.status,
+                        produk.gambar,
+                        produk.deskripsi,
+                        produk.hargaPcs * tv_pesan.text.toString().toBigInteger(),
+                        produk.id,
+                        sp.getUser()!!.id
+                    ).enqueue(object :
+                        Callback<ResponModel> {
+                        override fun onResponse(
+                            call: Call<ResponModel>,
+                            response: Response<ResponModel>
+                        ) {
+                            val intent =
+                                Intent(this@DetailProductActivity, MainActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                            finish()
+                            Toast.makeText(
+                                this@DetailProductActivity,
+                                "Pesanan Anda ditambah ke keranjang",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
-                    override fun onFailure(call: Call<ResponModel>, t: Throwable) {
-                        Toast.makeText(
-                            this@DetailProductActivity,
-                            "Pesanan Anda gagal ditambahkan",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                        override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+                            Toast.makeText(
+                                this@DetailProductActivity,
+                                "Pesanan Anda gagal ditambahkan",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
-                })
+                    })
 
-            }
+                }
 
-            customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
-                customDialog.dismiss()
+                customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
+                    customDialog.dismiss()
+                }
             }
 
         }
@@ -121,15 +128,26 @@ class DetailProductActivity : AppCompatActivity() {
 
         //set negative button
         builder.setPositiveButton(
-            "Update Now") { dialog, id ->
+            "Update Now"
+        ) { dialog, id ->
             // User clicked Update Now button
-            api.tambahPesan(produk.nama,produk.kategori,tv_pesan.text.toString().toInt(),produk.status,produk.gambar,produk.deskripsi,produk.hargaPcs*tv_pesan.text.toString().toBigInteger(),produk.id,
-                sp.getUser()!!.id)
+            api.tambahPesan(
+                produk.nama,
+                produk.kategori,
+                tv_pesan.text.toString().toInt(),
+                produk.status,
+                produk.gambar,
+                produk.deskripsi,
+                produk.hargaPcs * tv_pesan.text.toString().toBigInteger(),
+                produk.id,
+                sp.getUser()!!.id
+            )
         }
 
         //set positive button
         builder.setNegativeButton(
-            "Cancel") { dialog, id ->
+            "Cancel"
+        ) { dialog, id ->
             Toast.makeText(applicationContext, "Dibatalkan", Toast.LENGTH_SHORT).show()
         }
 

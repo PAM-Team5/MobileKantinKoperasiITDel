@@ -14,4 +14,5 @@ public class Pemesanan implements Serializable {
     public BigInteger hargaPcs;
     public int ID_Product;
     public int ID_User;
+    public String role;
 }

@@ -1,4 +1,4 @@
-package com.wordyka.kantinkorperasiitdel.activity
+package com.wordyka.kantinkorperasiitdel.activity.koperasi
 
 import android.content.Intent
 import android.net.Uri

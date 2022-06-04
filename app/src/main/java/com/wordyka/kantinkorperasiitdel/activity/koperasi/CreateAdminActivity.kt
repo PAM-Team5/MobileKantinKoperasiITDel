@@ -1,13 +1,13 @@
-package com.wordyka.kantinkorperasiitdel.activity
+package com.wordyka.kantinkorperasiitdel.activity.koperasi
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.wordyka.kantinkorperasiitdel.R
@@ -20,7 +20,7 @@ import retrofit2.Response
 
 class CreateAdminActivity : AppCompatActivity() {
     private lateinit var edtNama: EditText
-    private lateinit var edtKategori: EditText
+    private lateinit var edtKategori: TextView
     private lateinit var edtJumlah: EditText
     private lateinit var edtHargaPcs: EditText
     private lateinit var edtStatus: EditText
@@ -45,6 +45,33 @@ class CreateAdminActivity : AppCompatActivity() {
 
         setupView()
         setupListener()
+    }
+
+    fun pilihKategori(view: View) {
+        val items = arrayOf("Makanan ", "Minuman ", "Barang ")
+        val builder = AlertDialog.Builder(this)
+
+        edtKategori = findViewById(R.id.edtKategori)
+
+        builder.setTitle("Daftar Kategori")
+        builder.setSingleChoiceItems(items, -1) {
+                dialog, which ->
+            Toast.makeText(
+                applicationContext, items[which] + " dipilih", Toast.LENGTH_SHORT
+            ).show()
+            edtKategori.text = items[which]
+        }
+
+        builder.setPositiveButton("Pilih") { dialog: DialogInterface, which: Int ->
+            Toast.makeText(applicationContext, "Ok", Toast.LENGTH_SHORT).show()
+        }
+
+        builder.setNeutralButton("Batal") { dialog, which ->
+            dialog.cancel()
+        }
+
+        val mDialog = builder.create()
+        mDialog.show()
     }
 
     private fun selectImage() {
@@ -82,7 +109,7 @@ class CreateAdminActivity : AppCompatActivity() {
                 edtNama.error = "Nama produk harus diisi !"
             }
             if (edtKategori.text.toString().isEmpty()) {
-                edtKategori.error = "Kategori produk harus diisi !"
+                edtKategori.error = "Kategori produk harus dipilih !"
             }
             if (edtJumlah.text.toString().isEmpty()) {
                 edtJumlah.error = "jumlah produk harus diisi !"
@@ -106,6 +133,7 @@ class CreateAdminActivity : AppCompatActivity() {
                     "Kdk0eURsVMJpfaScmP5fCJRZkhwj1GSfAYe4YxRo.png",
                     edtDeskripsi.text.toString(),
                     edtHargaPcs.text.toString().toBigInteger(),
+                    "admin-koperasi"
                 )
                     .enqueue(object : Callback<SubmitModel> {
                         override fun onResponse(

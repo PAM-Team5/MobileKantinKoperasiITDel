@@ -184,23 +184,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="30dp"
-                        android:text="Pembelian dalam jumlah besar hubungi"
-                        android:textColor="@color/dark"
-                        android:textSize="13dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:text="exapmple@gmail.com"
-                        android:textColor="@color/biru"
-                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <View
@@ -256,6 +240,7 @@
                     android:layout_centerInParent="true"
                     android:text="Tambah Ke Keranjang"
                     android:textColor="@color/white"
+                    android:paddingVertical="10dp"
                     android:textSize="15dp"
                     android:textStyle="bold" />
             </RelativeLayout>

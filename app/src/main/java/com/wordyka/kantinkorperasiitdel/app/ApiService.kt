@@ -51,22 +51,41 @@ interface ApiService {
         @Path("id") id: Int
     ): Call<Void>
 
-    //    KANTIN & KOPERASI
+
+
+    //  ADMIN KANTIN & KOPERASI
     @GET("data-produk")
     fun getAdminProduk(): Call<List<Produk>>
 
-    @GET("data-produk/makanan")
-    fun getAdminProdukMakanan(): Call<List<Produk>>
+    @GET("data-produk/makananKoperasi")
+    fun getAdminProdukMakananKoperasi(): Call<List<Produk>>
 
-    @GET("data-produk/minuman")
-    fun getAdminProdukMinuman(): Call<List<Produk>>
+    @GET("data-produk/makananKantin")
+    fun getAdminProdukMakananKantin(): Call<List<Produk>>
 
-    @GET("data-produk/ruangan")
-    fun getAdminProdukRuangan(): Call<List<Produk>>
+    @GET("data-produk/minumanKoperasi")
+    fun getAdminProdukMinumanKoperasi(): Call<List<Produk>>
 
-    @GET("data-produk/pulsa")
-    fun getAdminProdukPulsa(): Call<List<Produk>>
+    @GET("data-produk/minumanKantin")
+    fun getAdminProdukMinumanKantin(): Call<List<Produk>>
 
+    @GET("data-produk/ruanganKoperasi")
+    fun getAdminProdukRuanganKoperasi(): Call<List<Produk>>
+
+    @GET("data-produk/ruanganKantin")
+    fun getAdminProdukRuanganKantin(): Call<List<Produk>>
+
+    @GET("data-produk/pulsaKoperasi")
+    fun getAdminProdukPulsaKoperasi(): Call<List<Produk>>
+
+    @GET("data-produk/pulsaKantin")
+    fun getAdminProdukPulsaKantin(): Call<List<Produk>>
+
+    @GET("data-produk/barangKoperasi")
+    fun getAdminProdukBarangKoperasi(): Call<List<Produk>>
+
+    @GET("data-produk/barangKantin")
+    fun getAdminProdukBarangKantin(): Call<List<Produk>>
 
     @FormUrlEncoded
     @POST("data-produk/tambah")
@@ -77,7 +96,8 @@ interface ApiService {
         @Field("status") status: String,
         @Field("gambar") gambar: String,
         @Field("deskripsi") deskripsi: String,
-        @Field("hargaPcs") hargaPcs: BigInteger
+        @Field("hargaPcs") hargaPcs: BigInteger,
+        @Field("role") role: String
     ): Call<SubmitModel>
 
     @FormUrlEncoded

@@ -11,4 +11,6 @@
     <string name="nomor_telepon">Nomor Telepon</string>
     <string name="password">Password</string>
     <string name="title_activity_admin">AdminActivity</string>
+    <string name="belum_punya_akun_daftar_di_sini"><u>Belum punya akun? Daftar di sini!</u></string>
+    <string name="sudah_punya_akun_login_di_sini"><u>Sudah punya akun? Login di sini!</u></string>
 </resources>

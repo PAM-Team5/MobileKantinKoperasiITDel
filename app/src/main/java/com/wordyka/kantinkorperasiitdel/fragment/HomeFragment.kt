@@ -31,7 +31,15 @@ class HomeFragment : Fragment() {
     lateinit var rv_makanan:RecyclerView
     lateinit var rv_minuman:RecyclerView
     lateinit var rv_pulsa:RecyclerView
+    lateinit var rv_barang:RecyclerView
     lateinit var rv_ruangan:RecyclerView
+
+    private var listProduk:ArrayList<Produk> = ArrayList()
+    private var listMakanan:ArrayList<Produk> = ArrayList()
+    private var listMinuman:ArrayList<Produk> = ArrayList()
+    private var listPulsa:ArrayList<Produk> = ArrayList()
+    private var listRuangan:ArrayList<Produk> = ArrayList()
+    private var listBarang:ArrayList<Produk> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,20 +74,27 @@ class HomeFragment : Fragment() {
         val layoutManager4 = LinearLayoutManager(activity)
         layoutManager4.orientation = LinearLayoutManager.HORIZONTAL
 
+        val layoutManager5 = LinearLayoutManager(activity)
+        layoutManager5.orientation = LinearLayoutManager.HORIZONTAL
+
         listMakanan = listProduk.filter {
-            it.kategori == "makanan"
+            it.kategori.equals("makanan",ignoreCase = true)
         } as ArrayList<Produk>
 
         listMinuman = listProduk.filter {
-            it.kategori == "minuman"
+            it.kategori.equals("minuman",ignoreCase = true)
         } as ArrayList<Produk>
 
         listPulsa = listProduk.filter {
-            it.kategori == "pulsa"
+            it.kategori.equals("pulsa",ignoreCase = true)
         } as ArrayList<Produk>
 
         listRuangan = listProduk.filter {
-            it.kategori == "ruangan"
+            it.kategori.equals("ruangan",ignoreCase = true)
+        } as ArrayList<Produk>
+
+        listBarang = listProduk.filter {
+            it.kategori.equals("barang",ignoreCase = true)
         } as ArrayList<Produk>
 
         rv_makanan.adapter = AdapterProduk(requireActivity(), listMakanan)
@@ -93,13 +108,10 @@ class HomeFragment : Fragment() {
 
         rv_ruangan.adapter = AdapterProduk(requireActivity(), listRuangan)
         rv_ruangan.layoutManager = layoutManager4
-    }
 
-    private var listProduk:ArrayList<Produk> = ArrayList()
-    private var listMakanan:ArrayList<Produk> = ArrayList()
-    private var listMinuman:ArrayList<Produk> = ArrayList()
-    private var listPulsa:ArrayList<Produk> = ArrayList()
-    private var listRuangan:ArrayList<Produk> = ArrayList()
+        rv_barang.adapter = AdapterProduk(requireActivity(), listBarang)
+        rv_barang.layoutManager = layoutManager5
+    }
 
 
     fun getProduk() {
@@ -127,6 +139,7 @@ class HomeFragment : Fragment() {
         rv_minuman = view.findViewById(R.id.rv_minuman)
         rv_pulsa = view.findViewById(R.id.rv_pulsa)
         rv_ruangan = view.findViewById(R.id.rv_ruangan)
+        rv_barang = view.findViewById(R.id.rv_barang)
     }
 
 
