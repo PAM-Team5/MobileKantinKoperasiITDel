@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
                 pb.visibility = View.GONE
                 if(respon.success == 1) {
                     sp.setStatusLogin(true)
-                    val intent =  Intent(this@RegisterActivity, LoginActivity::class.java)
+                    val intent =  Intent(this@RegisterActivity, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     finish()

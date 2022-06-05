@@ -9,6 +9,8 @@ import java.io.File
 import java.math.BigInteger
 
 interface ApiService {
+    // AUTENTIKASI
+
     @FormUrlEncoded
     @POST("register")
     fun register(
@@ -25,9 +27,12 @@ interface ApiService {
         @Field("password") password: String,
     ): Call<ResponModel>
 
+    // CUSTOMER PRODUK
 
     @GET("produk")
     fun getProduk(): Call<ResponModel>
+
+    // CUSTOMER PEMESANAN
 
     @GET("pemesanan")
     fun getPemesanan(): Call<ResponModel>
@@ -44,7 +49,17 @@ interface ApiService {
         @Field("hargaPcs") hargaPcs: BigInteger,
         @Field("ID_Product") ID_Product: Int,
         @Field("ID_User") ID_User: Int,
+        @Field("role") role: String,
+        @Field("harga") harga: BigInteger
     ): Call<ResponModel>
+
+    @FormUrlEncoded
+    @PUT("pemesanan/ubah/{id}")
+    fun updatePemesanan(
+        @Path("id") id: Int,
+        @Field("jumlah") jumlah: Int,
+        @Field("harga") harga: BigInteger
+    ): Call<SubmitModel>
 
     @DELETE("pemesanan/hapus/{id}")
     fun deletePesan(
@@ -53,7 +68,7 @@ interface ApiService {
 
 
 
-    //  ADMIN KANTIN & KOPERASI
+    //  ADMIN KANTIN & KOPERASI PRODUK
     @GET("data-produk")
     fun getAdminProduk(): Call<List<Produk>>
 

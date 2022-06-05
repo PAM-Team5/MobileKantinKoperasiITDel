@@ -330,8 +330,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="25dp"
-                android:text="Log out"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textStyle="bold"
+                android:text="Keluar"
+                android:textColor="#FF0000" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -75,9 +75,8 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     }
-                    if(respon.user.role.equals(null)) {
+                    if(respon.user.role.isNullOrBlank()) {
                         val intent =  Intent(this@LoginActivity, MainActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
                     }

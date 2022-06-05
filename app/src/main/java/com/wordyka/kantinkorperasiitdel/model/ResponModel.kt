@@ -5,5 +5,5 @@ class ResponModel {
     lateinit var message:String
     var user = User()
     var products:ArrayList<Produk> = ArrayList()
-    var pembayarans:ArrayList<Pemesanan> = ArrayList()
+    var pemesanan:ArrayList<Pemesanan> = ArrayList()
 }

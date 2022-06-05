@@ -27,17 +27,42 @@
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/product" />
 
-            <TextView
-                android:id="@+id/tv_nama"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:ellipsize="marquee"
-                android:lines="2"
-                android:maxLines="3"
-                android:text="Nama Produk"
-                android:textColor="@color/colorPrimary" />
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp">
+
+                <TextView
+                    android:id="@+id/tv_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:maxLines="3"
+                    android:text="Nama Produk"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_deskripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="marquee"
+                    android:gravity="start"
+                    android:lines="2"
+                    android:maxLines="3"
+                    android:text="Nama Produk"
+                    android:textSize="5pt"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -66,11 +91,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="5dp"
                     android:ellipsize="marquee"
                     android:text="Rp.10.000"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:text="/pcs"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <RelativeLayout

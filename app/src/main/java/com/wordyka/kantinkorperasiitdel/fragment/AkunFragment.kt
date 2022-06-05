@@ -39,6 +39,9 @@ class AkunFragment : Fragment() {
 
         btnLogout.setOnClickListener {
             sp.setStatusLogin(false)
+            val intent =  Intent(this.activity, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
 
         setData()
