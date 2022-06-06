@@ -1,5 +1,6 @@
 package com.wordyka.kantinkorperasiitdel.app
 
+import com.wordyka.kantinkorperasiitdel.model.Pembelian
 import com.wordyka.kantinkorperasiitdel.model.Produk
 import com.wordyka.kantinkorperasiitdel.model.ResponModel
 import okhttp3.ResponseBody
@@ -54,11 +55,20 @@ interface ApiService {
     ): Call<ResponModel>
 
     @FormUrlEncoded
-    @PUT("pemesanan/ubah/{id}")
+    @PUT("pemesananJumlah/ubah/{id}")
     fun updatePemesanan(
         @Path("id") id: Int,
         @Field("jumlah") jumlah: Int,
         @Field("harga") harga: BigInteger
+    ): Call<SubmitModel>
+
+
+    @FormUrlEncoded
+    @PUT("pemesananBayar/ubah/{id}")
+    fun bayarPemesanan(
+        @Path("id") id: Int,
+        @Field("status") status: String,
+        @Field("ID_Pembelian") ID_Pembelian: Int
     ): Call<SubmitModel>
 
     @DELETE("pemesanan/hapus/{id}")
@@ -67,6 +77,22 @@ interface ApiService {
     ): Call<Void>
 
 
+    // CUSTOMER PEMBELIAN
+    @GET("pembelian/{ID_User}")
+    fun getPembelian(
+        @Path("ID_User") ID_User: Int
+    ): Call<List<Pembelian>>
+
+    @FormUrlEncoded
+    @POST("pembelian/tambah")
+    fun tambahPembelian(
+        @Field("id") id: Int,
+        @Field("jumlah") jumlah: Int,
+        @Field("harga") harga: Int,
+        @Field("status") status: String,
+        @Field("deskripsi") deskripsi: String,
+        @Field("ID_User") ID_User: Int
+    ): Call<ResponModel>
 
     //  ADMIN KANTIN & KOPERASI PRODUK
     @GET("data-produk")
@@ -132,6 +158,11 @@ interface ApiService {
     fun deleteAdminProduk(
         @Path("id") id: Int
     ): Call<Void>
+
+
+    //  ADMIN KANTIN & KOPERASI PEMBELIAN
+    @GET("pembelian")
+    fun getPembelianAdmin(): Call<List<Pembelian>>
 
 
 

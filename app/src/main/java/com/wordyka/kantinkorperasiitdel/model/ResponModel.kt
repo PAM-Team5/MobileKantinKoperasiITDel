@@ -6,4 +6,5 @@ class ResponModel {
     var user = User()
     var products:ArrayList<Produk> = ArrayList()
     var pemesanan:ArrayList<Pemesanan> = ArrayList()
+    var pembelian:ArrayList<Pembelian> = ArrayList()
 }

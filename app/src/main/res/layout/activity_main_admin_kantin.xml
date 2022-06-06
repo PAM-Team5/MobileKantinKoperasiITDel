@@ -44,11 +44,30 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp">
 
+
         <LinearLayout
             android:id="@+id/layoutAtas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/btnBeli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:backgroundTint="#029F0A"
+                    android:text="Lihat Daftar Pembelian" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_makanan"

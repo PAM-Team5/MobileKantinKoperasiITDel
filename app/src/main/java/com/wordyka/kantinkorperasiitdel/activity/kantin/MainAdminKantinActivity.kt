@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wordyka.kantinkorperasiitdel.R
 import com.wordyka.kantinkorperasiitdel.activity.koperasi.EditAdminActivity
 import com.wordyka.kantinkorperasiitdel.activity.MasukActivity
+import com.wordyka.kantinkorperasiitdel.activity.RiwayatPemesanAdminActivity
 import com.wordyka.kantinkorperasiitdel.adapter.AdapterAdminProduk
 import com.wordyka.kantinkorperasiitdel.app.ApiConfig
 import com.wordyka.kantinkorperasiitdel.helper.SharePref
@@ -33,6 +35,7 @@ class MainAdminKantinActivity : AppCompatActivity() {
     private lateinit var rvProdukRuangan: RecyclerView
 
     private lateinit var btnAddProduk: FloatingActionButton
+    private lateinit var btnBeli: Button
     private lateinit var btnAdminProfil: ImageView
 
     private var listMinuman:ArrayList<Produk> = ArrayList()
@@ -53,7 +56,12 @@ class MainAdminKantinActivity : AppCompatActivity() {
         btnAdminProfil.setOnClickListener {
             val intent =  Intent(this@MainAdminKantinActivity, MasukActivity::class.java)
             startActivity(intent)
-            finish()
+        }
+
+        btnBeli = findViewById(R.id.btnBeli)
+        btnBeli.setOnClickListener {
+            val intent =  Intent(this@MainAdminKantinActivity, RiwayatPemesanAdminActivity::class.java)
+            startActivity(intent)
         }
 
         setupView()

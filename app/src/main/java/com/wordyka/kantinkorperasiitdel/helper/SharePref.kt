@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.wordyka.kantinkorperasiitdel.model.Pembelian
 import com.wordyka.kantinkorperasiitdel.model.Pemesanan
 import com.wordyka.kantinkorperasiitdel.model.Produk
 import com.wordyka.kantinkorperasiitdel.model.User
@@ -15,6 +16,7 @@ class SharePref(activity: Activity) {
     val email = "email"
     val user = "user"
     val pesan = "pesan"
+    val beli = "beli"
     val produk = "produk"
 
     val mypref = "MAIN_PREF"
@@ -54,7 +56,7 @@ class SharePref(activity: Activity) {
         return json
     }
 
-    fun setPesan(value:Pemesanan?) {
+    fun setPesan(value:Pemesanan) {
         val data:String = Gson().toJson(value, Pemesanan::class.java)
         sp.edit().putString(pesan, data).apply()
     }
@@ -62,6 +64,17 @@ class SharePref(activity: Activity) {
     fun getPesan():Pemesanan? {
         val data:String = sp.getString(pesan, "") ?: return null
         val json = Gson().fromJson<Pemesanan>(data, Pemesanan::class.java)
+        return json
+    }
+
+    fun setPembelian(value:Pembelian) {
+        val data:String = Gson().toJson(value, Pembelian::class.java)
+        sp.edit().putString(beli, data).apply()
+    }
+
+    fun getPembelian():Pembelian? {
+        val data:String = sp.getString(beli, "") ?: return null
+        val json = Gson().fromJson<Pembelian>(data, Pembelian::class.java)
         return json
     }
 

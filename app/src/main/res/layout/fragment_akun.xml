@@ -158,7 +158,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/btn_keranjang"
+                        android:id="@+id/layoutRiwayat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
@@ -177,10 +177,11 @@
                                 app:srcCompat="@drawable/ic_baseline_shopping_cart_24_orange" />
 
                             <TextView
+                                android:id="@+id/tvRiwayat"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:text="Daftar Keranjang"
+                                android:text="Riwayat Pemesanan"
                                 android:textColor="@color/colorPrimaryDark" />
                         </LinearLayout>
 

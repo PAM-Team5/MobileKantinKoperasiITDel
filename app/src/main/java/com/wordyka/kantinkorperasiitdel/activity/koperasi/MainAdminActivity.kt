@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wordyka.kantinkorperasiitdel.R
 import com.wordyka.kantinkorperasiitdel.activity.MasukActivity
+import com.wordyka.kantinkorperasiitdel.activity.RiwayatPemesanAdminActivity
 import com.wordyka.kantinkorperasiitdel.adapter.AdapterAdminProduk
 import com.wordyka.kantinkorperasiitdel.app.ApiConfig
 import com.wordyka.kantinkorperasiitdel.model.Produk
@@ -29,7 +30,6 @@ class MainAdminActivity : AppCompatActivity() {
     private lateinit var rvProdukBarang: RecyclerView
 
     private lateinit var btnAddProduk: FloatingActionButton
-    private lateinit var btnPesan: Button
     private lateinit var btnBeli: Button
     private lateinit var btnAdminProfil: ImageView
 
@@ -46,21 +46,14 @@ class MainAdminActivity : AppCompatActivity() {
         btnAdminProfil.setOnClickListener {
             val intent =  Intent(this@MainAdminActivity, MasukActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
-        btnPesan = findViewById(R.id.btnPesan)
-        btnPesan.setOnClickListener {
-            val intent =  Intent(this@MainAdminActivity, PemesananAdminKoperasiActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
 
         btnBeli = findViewById(R.id.btnBeli)
         btnBeli.setOnClickListener {
-            val intent =  Intent(this@MainAdminActivity, PembelianAdminKoperasiActivity::class.java)
+            val intent =  Intent(this@MainAdminActivity, RiwayatPemesanAdminActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         setupView()

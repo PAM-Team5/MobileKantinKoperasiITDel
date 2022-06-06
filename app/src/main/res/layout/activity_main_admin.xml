@@ -57,23 +57,15 @@
                 android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnPesan"
-                    android:layout_marginRight="2dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#0105DA"
-                    android:text="Daftar Pemesanan"/>
+
 
                 <Button
                     android:id="@+id/btnBeli"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:backgroundTint="#029F0A"
                     android:layout_height="wrap_content"
-                    android:text="Daftar Pembelian"/>
+                    android:text="Lihat Daftar Pembelian"/>
 
             </LinearLayout>
 

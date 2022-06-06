@@ -53,7 +53,7 @@ class DetailProductActivity : AppCompatActivity() {
                 val dialogView = layoutInflater.inflate(R.layout.modal_pemesanan, null)
                 val tv_pesan = dialogView.findViewById<EditText>(R.id.tv_pesan)
                 dialog.setView(dialogView)
-                dialog.setPositiveButton("Kirim", { dialogInterface: DialogInterface, i: Int -> })
+                dialog.setPositiveButton("Pesan", { dialogInterface: DialogInterface, i: Int -> })
                 dialog.setNegativeButton("Batal", { dialogInterface: DialogInterface, i: Int -> })
                 val customDialog = dialog.create()
                 customDialog.show()
@@ -66,7 +66,7 @@ class DetailProductActivity : AppCompatActivity() {
                             produk.nama,
                             produk.kategori,
                             tv_pesan.text.toString().toInt(),
-                            produk.status,
+                            "belum-dibayar",
                             produk.gambar,
                             produk.deskripsi,
                             produk.hargaPcs,

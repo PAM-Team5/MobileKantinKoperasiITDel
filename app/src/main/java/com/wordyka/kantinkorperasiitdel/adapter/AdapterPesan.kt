@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -51,20 +52,15 @@ class AdapterPesan(var activity: Activity, val listener: AdapterPesan.OnAdapterL
 
         Glide.with(this.activity).load(image).placeholder(R.drawable.product).into(holder.imgProduk)
 
-        holder.layout.setOnClickListener {
-            val intentActivityPesan = Intent(activity, MainActivity::class.java)
-
-            val str = Gson().toJson(data[position], Pemesanan::class.java)
-            intentActivityPesan.putExtra("extraPesan",str)
-
-            activity.startActivity(intentActivityPesan)
-        }
 
         holder.btn_tambah.setOnClickListener {
             listener.onUpdateTambahPesan(pesan,holder.tv_jumlah)
         }
         holder.btn_kurang.setOnClickListener {
             listener.onUpdateKurangPesan(pesan,holder.tv_jumlah)
+        }
+        holder.btn_delete.setOnClickListener {
+            listener.onDeletePesan(pesan)
         }
         holder.btn_delete.setOnClickListener {
             listener.onDeletePesan(pesan)

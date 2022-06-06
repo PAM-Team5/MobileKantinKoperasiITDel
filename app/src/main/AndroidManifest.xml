@@ -16,6 +16,15 @@
         android:theme="@style/Theme.KantinKorperasiITDel"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.RiwayatPemesanAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailRiwayatPemesananActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RiwayatPemesananActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.koperasi.PembelianAdminKoperasiActivity"
             android:exported="false" />
         <activity

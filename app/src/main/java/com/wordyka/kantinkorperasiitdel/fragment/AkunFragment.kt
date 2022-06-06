@@ -7,10 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.wordyka.kantinkorperasiitdel.MainActivity
 import com.wordyka.kantinkorperasiitdel.R
 import com.wordyka.kantinkorperasiitdel.activity.LoginActivity
+import com.wordyka.kantinkorperasiitdel.activity.RiwayatPemesananActivity
+import com.wordyka.kantinkorperasiitdel.app.ApiConfig
 import com.wordyka.kantinkorperasiitdel.helper.SharePref
 
 /**
@@ -25,6 +30,7 @@ class AkunFragment : Fragment() {
     lateinit var tvNama:TextView
     lateinit var tvEmail:TextView
     lateinit var tvPhone:TextView
+    lateinit var layoutRiwayat: RelativeLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +51,20 @@ class AkunFragment : Fragment() {
         }
 
         setData()
+        getRiwayat(view)
 
         return view
+    }
+
+    fun getRiwayat(view: View) {
+        layoutRiwayat.setOnClickListener {
+            startActivity(
+                Intent(
+                    context,
+                    RiwayatPemesananActivity::class.java
+                )
+            )
+        }
     }
 
     fun setData() {
@@ -69,6 +87,7 @@ class AkunFragment : Fragment() {
         tvNama = view.findViewById(R.id.tv_nama)
         tvEmail = view.findViewById(R.id.tv_email)
         tvPhone = view.findViewById(R.id.tv_phone)
+        layoutRiwayat = view.findViewById(R.id.layoutRiwayat)
 
     }
 
