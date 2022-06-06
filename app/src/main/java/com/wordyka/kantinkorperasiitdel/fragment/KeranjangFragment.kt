@@ -163,7 +163,6 @@ class KeranjangFragment : Fragment() {
                                                 response: Response<SubmitModel>
                                             ) {
 
-                                                println("Jumlah beli barang : "+item.jumlah)
 
                                                 ApiConfig.instanceRetrofit.getProduk().enqueue(object :
                                                     Callback<ResponModel> {
