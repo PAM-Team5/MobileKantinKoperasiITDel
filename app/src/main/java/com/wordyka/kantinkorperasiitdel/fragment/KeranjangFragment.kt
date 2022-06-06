@@ -47,14 +47,16 @@ class KeranjangFragment : Fragment() {
     private var listPesanUserBelumBayar: ArrayList<Pemesanan> = ArrayList()
     private var listPesanKosong: ArrayList<Pemesanan> = ArrayList()
     private var listProdukPesan: ArrayList<Pemesanan> = ArrayList()
+    private var listProduk: ArrayList<Produk> = ArrayList()
     lateinit var tv_total: TextView
     lateinit var tv_bayar: EditText
+    var jumlah: Int = 0
     lateinit var swipeLayout: SwipeRefreshLayout
     lateinit var sp: SharePref
-    var idPembelian:Int = 0
+    var idPembelian: Int = 0
     var total: Int = 0
-    var jumlah: Int = 0
     var totalHarga: Int = 0
+    var jumlahProduk: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -126,7 +128,7 @@ class KeranjangFragment : Fragment() {
                             val status = "bayar"
                             idPembelian += 1
                             listPesanUser.forEach {
-                                while (it.ID_Pembelian>=idPembelian) {
+                                while (it.ID_Pembelian >= idPembelian) {
                                     idPembelian += 1
                                 }
                             }
@@ -160,12 +162,85 @@ class KeranjangFragment : Fragment() {
                                                 call: Call<SubmitModel>,
                                                 response: Response<SubmitModel>
                                             ) {
+
+                                                println("Jumlah beli barang : "+item.jumlah)
+
+                                                ApiConfig.instanceRetrofit.getProduk().enqueue(object :
+                                                    Callback<ResponModel> {
+                                                    override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
+                                                        val res = response.body()!!
+                                                        if (res.success == 1) {
+                                                            listProduk = res.products
+
+                                                            listProduk = listProduk.filter {
+                                                                it.id.equals(item.ID_Product)
+                                                            } as ArrayList<Produk>
+
+                                                            listProduk.forEach {
+                                                                jumlahProduk = it.jumlah
+                                                            }
+
+                                                            var jumlahAfter : Int = jumlahProduk - item.jumlah
+
+                                                            ApiConfig.instanceRetrofit.updateProduk(
+                                                                item.ID_Product,
+                                                                jumlahAfter
+                                                            ).enqueue(object :
+                                                                Callback<SubmitModel> {
+                                                                override fun onResponse(
+                                                                    call: Call<SubmitModel>,
+                                                                    response: Response<SubmitModel>
+                                                                ) {
+                                                                    getPesan()
+                                                                }
+
+                                                                override fun onFailure(
+                                                                    call: Call<SubmitModel>,
+                                                                    t: Throwable
+                                                                ) {
+
+                                                                }
+
+                                                            })
+
+                                                            // jika jumlah barang 0
+
+                                                            if(jumlahAfter<=0) {
+                                                                ApiConfig.instanceRetrofit.updateProdukStatus(item.ID_Product,"Habis").enqueue(object :
+                                                                    Callback<SubmitModel> {
+                                                                    override fun onResponse(
+                                                                        call: Call<SubmitModel>,
+                                                                        response: Response<SubmitModel>
+                                                                    ) {
+                                                                        getPesan()
+                                                                    }
+
+                                                                    override fun onFailure(
+                                                                        call: Call<SubmitModel>,
+                                                                        t: Throwable
+                                                                    ) {
+                                                                    }
+
+                                                                })
+                                                            }
+
+
+                                                        }
+                                                    }
+
+                                                    override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+
+                                                    }
+
+                                                })
+
+
+
                                                 Toast.makeText(
                                                     context,
                                                     "Pembayaran berhasil dilakukan",
                                                     Toast.LENGTH_SHORT
                                                 ).show()
-                                                getPesan()
                                             }
 
                                             override fun onFailure(
@@ -208,6 +283,8 @@ class KeranjangFragment : Fragment() {
     }
 
 
+
+
     private fun getPesan() {
 
         ApiConfig.instanceRetrofit.getPemesanan().enqueue(object :
@@ -227,8 +304,8 @@ class KeranjangFragment : Fragment() {
                         } as ArrayList<Pemesanan>
 
                         listPesanUserBelumBayar = listPesanUser.filter {
-                            it.status.equals("belum-dibayar",ignoreCase = true)
-                        }as ArrayList<Pemesanan>
+                            it.status.equals("belum-dibayar", ignoreCase = true)
+                        } as ArrayList<Pemesanan>
 
                         total = 0
 
@@ -251,9 +328,8 @@ class KeranjangFragment : Fragment() {
                                     var harga = 0
 
                                     listProdukPesan = listPesanUser.filter {
-                                        it.ID_Product == pesan.ID_Product
+                                        it.ID_Product.equals(pesan.ID_Product)
                                     } as ArrayList<Pemesanan>
-
 
                                     for (item in listPesanUserBelumBayar) {
                                         harga = item.hargaPcs.toInt()

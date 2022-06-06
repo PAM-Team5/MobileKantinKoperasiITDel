@@ -53,19 +53,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
-
 
 
                 <Button
                     android:id="@+id/btnBeli"
-                    android:layout_marginLeft="2dp"
                     android:layout_width="wrap_content"
-                    android:backgroundTint="#029F0A"
                     android:layout_height="wrap_content"
-                    android:text="Lihat Daftar Pembelian"/>
+                    android:layout_marginLeft="2dp"
+                    android:backgroundTint="#029F0A"
+                    android:text="Lihat Daftar Pembelian" />
 
             </LinearLayout>
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.wordyka.kantinkorperasiitdel.R
 import com.wordyka.kantinkorperasiitdel.adapter.AdapterAdminProduk
 import com.wordyka.kantinkorperasiitdel.adapter.AdapterPembelian
@@ -25,6 +26,7 @@ class RiwayatPemesananActivity : AppCompatActivity() {
     private lateinit var adapterPembelian: AdapterPembelian
     private var listBeli: ArrayList<Pembelian> = ArrayList()
     private var listBeliUser: ArrayList<Pembelian> = ArrayList()
+    lateinit var swipeLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,12 @@ class RiwayatPemesananActivity : AppCompatActivity() {
 
         setupView()
         getPembelian()
+
+        swipeLayout = findViewById(R.id.swipeRefreshLayoutCustomer)
+        swipeLayout.setOnRefreshListener {
+            getPembelian()
+            swipeLayout.isRefreshing = false
+        }
 
     }
 

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager.widget.ViewPager
 import com.wordyka.kantinkorperasiitdel.R
 import com.wordyka.kantinkorperasiitdel.adapter.AdapterProduk
@@ -40,6 +41,7 @@ class HomeFragment : Fragment() {
     private var listPulsa:ArrayList<Produk> = ArrayList()
     private var listRuangan:ArrayList<Produk> = ArrayList()
     private var listBarang:ArrayList<Produk> = ArrayList()
+    lateinit var swipeLayout: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +51,13 @@ class HomeFragment : Fragment() {
 
         init(view)
         getProduk()
+
+        swipeLayout = view.findViewById(R.id.swipeRefreshLayoutProduk)
+        swipeLayout.setOnRefreshListener {
+            getProduk()
+            swipeLayout.isRefreshing = false
+        }
+
 
         return view
     }

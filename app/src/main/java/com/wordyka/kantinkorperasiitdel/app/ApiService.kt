@@ -84,6 +84,21 @@ interface ApiService {
     ): Call<List<Pembelian>>
 
     @FormUrlEncoded
+    @PUT("data-produk-jumlah/ubah/{id}")
+    fun updateProduk(
+        @Path("id") id: Int,
+        @Field("jumlah") jumlah: Int
+    ): Call<SubmitModel>
+
+    @FormUrlEncoded
+    @PUT("data-produk-status/ubah/{id}")
+    fun updateProdukStatus(
+        @Path("id") id: Int,
+        @Field("status") status: String
+    ): Call<SubmitModel>
+
+
+    @FormUrlEncoded
     @POST("pembelian/tambah")
     fun tambahPembelian(
         @Field("id") id: Int,
