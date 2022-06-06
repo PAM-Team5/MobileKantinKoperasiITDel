@@ -48,7 +48,7 @@ class AdapterPembelian(var activity: Activity,  val listener: OnAdapterListener,
         if(data[position].status.equals("belum-diantar")) {
             holder.tvStatus.text = "Proses Pengantaran"
         } else {
-            holder.tvStatus.text = "Sedang Diproses"
+            holder.tvStatus.text = data[position].status
         }
 
         holder.itemView.setOnClickListener {

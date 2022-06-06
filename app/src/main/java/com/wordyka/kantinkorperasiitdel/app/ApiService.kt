@@ -164,6 +164,12 @@ interface ApiService {
     @GET("pembelian")
     fun getPembelianAdmin(): Call<List<Pembelian>>
 
+    @FormUrlEncoded
+    @PUT("pembelian/ubah/{id}")
+    fun updatePembelianAdmin(
+        @Path("id") id: Int,
+        @Field("status") status: String
+    ): Call<SubmitModel>
 
 
 }
