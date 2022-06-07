@@ -1,8 +1,6 @@
 package com.wordyka.kantinkorperasiitdel.app
 
-import com.wordyka.kantinkorperasiitdel.model.Pembelian
-import com.wordyka.kantinkorperasiitdel.model.Produk
-import com.wordyka.kantinkorperasiitdel.model.ResponModel
+import com.wordyka.kantinkorperasiitdel.model.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -82,6 +80,16 @@ interface ApiService {
     fun getPembelian(
         @Path("ID_User") ID_User: Int
     ): Call<List<Pembelian>>
+
+    @GET("user/{ID_User}")
+    fun getCustomer(
+        @Path("ID_User") ID_User: Int
+    ): Call<ResponModel>
+
+    @GET("pemesananRiwayat/{ID_Pembelian}")
+    fun getPemesananRiwayat(
+        @Path("ID_Pembelian") ID_Pembelian: Int
+    ): Call<List<Pemesanan>>
 
     @FormUrlEncoded
     @PUT("data-produk-jumlah/ubah/{id}")

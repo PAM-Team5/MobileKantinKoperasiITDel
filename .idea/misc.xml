@@ -9,13 +9,14 @@
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/drawable/ic_baseline_login.xml" value="0.1225" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/drawable/ic_baseline_shopping_cart_24_orange.xml" value="0.1135" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/drawable/ic_lock_oren_24dp.xml" value="0.1135" />
+        <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_adapter_riwayat.xml" value="0.16884761502743773" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_admin.xml" value="0.1" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_baru.xml" value="0.1" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_create_admin.xml" value="0.22530996152201796" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_create_admin_kantin.xml" value="0.2" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_create_admin_koperasi.xml" value="0.22530996152201796" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_detail_product.xml" value="0.264" />
-        <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_detail_riwayat_pemesanan.xml" value="0.1" />
+        <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_detail_riwayat_pemesanan.xml" value="0.2" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_edit_admin.xml" value="0.14736842105263157" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_edit_admin_kantin.xml" value="0.1" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_edit_admin_koperasi.xml" value="0.1566265060240964" />
@@ -26,6 +27,8 @@
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_main_admin_koperasi.xml" value="0.1566265060240964" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_masuk.xml" value="0.16" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_modal_update_status_beli.xml" value="0.15755329008341057" />
+        <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_pembelian_admin_koperasi.xml" value="0.16884761502743773" />
+        <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_pemesanan_admin_koperasi.xml" value="0.16884761502743773" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_register.xml" value="0.22245673279864922" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_riwayat_pemesan_admin.xml" value="0.15755329008341057" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/activity_riwayat_pemesanan.xml" value="0.15755329008341057" />
@@ -36,6 +39,7 @@
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/item_keranjang.xml" value="0.264" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/item_produk.xml" value="0.264" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/item_riwayat.xml" value="0.2" />
+        <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/item_riwayat_produk.xml" value="0.22530996152201796" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/item_slider.xml" value="0.14166666666666666" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/modal_pembayaran.xml" value="0.16758125791473197" />
         <entry key="..\:/PAM/AplikasiMobileKantinKoperasiITDel-main/app/src/main/res/layout/modal_pemesanan.xml" value="0.2" />

@@ -1,6 +1,7 @@
 package com.wordyka.kantinkorperasiitdel.activity
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -32,7 +33,6 @@ class RiwayatPemesanAdminActivity : AppCompatActivity() {
     private var listBeli: ArrayList<Pembelian> = ArrayList()
     private var listBeliUser: ArrayList<Pembelian> = ArrayList()
     lateinit var swipeLayout: SwipeRefreshLayout
-    lateinit var newStatus:String
     lateinit var tv_pendapatan:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,47 +65,11 @@ class RiwayatPemesanAdminActivity : AppCompatActivity() {
 
         adapterPembelian = AdapterPembelian(this@RiwayatPemesanAdminActivity,object : AdapterPembelian.OnAdapterListener {
             override fun onUpdate(beli: Pembelian) {
-                val items = arrayOf("Proses Pengantaran","Telah Diantar","Dibatalkan")
-                val builder = AlertDialog.Builder(this@RiwayatPemesanAdminActivity)
+                sp.setPembelian(beli)
 
-
-                builder.setTitle("Pilih Status")
-                builder.setSingleChoiceItems(items, -1) {
-                        dialog, which ->
-                    Toast.makeText(
-                        applicationContext, items[which] + " dipilih", Toast.LENGTH_SHORT
-                    ).show()
-                    newStatus = items[which]
-                }
-
-                builder.setPositiveButton("Pilih") { dialog: DialogInterface, which: Int ->
-
-                }
-
-                builder.setNeutralButton("Batal") { dialog, which ->
-                    dialog.cancel()
-                }
-
-                val mDialog = builder.create()
-                mDialog.show()
-
-                mDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                    api.updatePembelianAdmin(beli.id,newStatus).enqueue(object :
-                        Callback<SubmitModel> {
-                        override fun onResponse(
-                            call: Call<SubmitModel>,
-                            response: Response<SubmitModel>
-                        ) {
-                            Toast.makeText(this@RiwayatPemesanAdminActivity,"Status berhasil diubah",Toast.LENGTH_SHORT).show()
-                        }
-
-                        override fun onFailure(call: Call<SubmitModel>, t: Throwable) {
-                            Toast.makeText(this@RiwayatPemesanAdminActivity,"Status gagal diubah",Toast.LENGTH_SHORT).show()
-                        }
-
-                    })
-                    mDialog.dismiss()
-                }
+                val intent = Intent(this@RiwayatPemesanAdminActivity,DetailRiwayatPemesananActivity::class.java)
+                intent.putExtra("riwayat", beli.id)
+                startActivity(intent)
             }
 
         }, arrayListOf())
