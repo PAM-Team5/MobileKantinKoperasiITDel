@@ -15,6 +15,7 @@ import com.wordyka.kantinkorperasiitdel.activity.MasukActivity
 import com.wordyka.kantinkorperasiitdel.activity.RiwayatPemesanAdminActivity
 import com.wordyka.kantinkorperasiitdel.adapter.AdapterAdminProduk
 import com.wordyka.kantinkorperasiitdel.app.ApiConfig
+import com.wordyka.kantinkorperasiitdel.helper.SharePref
 import com.wordyka.kantinkorperasiitdel.model.Produk
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,12 +39,17 @@ class MainAdminActivity : AppCompatActivity() {
     private var listBarang:ArrayList<Produk> = ArrayList()
     private var listProduk:ArrayList<Produk> = ArrayList()
 
+    lateinit var sp: SharePref
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_admin)
 
+        sp = SharePref(this)
+
         btnAdminProfil = findViewById(R.id.btnAdminProfil)
         btnAdminProfil.setOnClickListener {
+            sp.setStatusLogin(false)
             val intent =  Intent(this@MainAdminActivity, MasukActivity::class.java)
             startActivity(intent)
         }
@@ -213,7 +219,7 @@ class MainAdminActivity : AppCompatActivity() {
 
 
     private fun getProdukMakanan() {
-        api.getAdminProdukMakananKoperasi().enqueue(object : Callback<List<Produk>> {
+        ApiConfig.instanceRetrofit.getAdminProdukMakananKoperasi().enqueue(object : Callback<List<Produk>> {
             override fun onResponse(
                 call: Call<List<Produk>>,
                 response: Response<List<Produk>>

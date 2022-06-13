@@ -81,10 +81,10 @@ interface ApiService {
         @Path("ID_User") ID_User: Int
     ): Call<List<Pembelian>>
 
-    @GET("user/{ID_User}")
+    @GET("user/{id}")
     fun getCustomer(
-        @Path("ID_User") ID_User: Int
-    ): Call<ResponModel>
+        @Path("id") id: Int
+    ): Call<List<User>>
 
     @GET("pemesananRiwayat/{ID_Pembelian}")
     fun getPemesananRiwayat(

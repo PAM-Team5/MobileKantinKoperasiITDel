@@ -53,7 +53,11 @@ class RiwayatPemesananActivity : AppCompatActivity() {
 
         adapterPembelian = AdapterPembelian(this@RiwayatPemesananActivity,object : AdapterPembelian.OnAdapterListener {
             override fun onUpdate(beli: Pembelian) {
-                TODO("Not yet implemented")
+                sp.setPembelian(beli)
+
+                val intent = Intent(this@RiwayatPemesananActivity,DetailRiwayatPemesananCustomerActivity::class.java)
+                intent.putExtra("riwayat", beli.id)
+                startActivity(intent)
             }
 
         }, arrayListOf())

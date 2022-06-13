@@ -22,7 +22,7 @@ import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class DetailRiwayatPemesananActivity : AppCompatActivity() {
+class DetailRiwayatPemesananCustomerActivity : AppCompatActivity() {
     private val api by lazy { ApiConfig.instanceRetrofit }
     lateinit var rv_detail_riwayat: RecyclerView
     lateinit var sp: SharePref
@@ -31,12 +31,10 @@ class DetailRiwayatPemesananActivity : AppCompatActivity() {
     lateinit var tv_pemesan: TextView
     lateinit var tv_telp: TextView
     lateinit var tv_totalPesan: TextView
-    lateinit var btn_updateStatus: TextView
-    lateinit var newStatus:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_riwayat_pemesanan)
+        setContentView(R.layout.activity_detail_riwayat_pemesanan_customer)
         sp = SharePref(this)
 
         init()
@@ -48,65 +46,14 @@ class DetailRiwayatPemesananActivity : AppCompatActivity() {
         tv_pemesan = findViewById(R.id.tv_pemesan)
         tv_telp = findViewById(R.id.tv_telp)
         tv_totalPesan = findViewById(R.id.tv_totalPesan)
-        btn_updateStatus = findViewById(R.id.btn_updateStatus)
 
         tv_totalPesan.text =
             NumberFormat.getCurrencyInstance(Locale("in", "ID")).format(sp.getPembelian()!!.harga)
 
         customer()
 
-        btn_updateStatus.setOnClickListener {
-            val items = arrayOf("Proses Pengantaran", "Telah Diantar", "Selesai", "Dibatalkan")
-            val builder = AlertDialog.Builder(this@DetailRiwayatPemesananActivity)
-
-
-            builder.setTitle("Pilih Status")
-            builder.setSingleChoiceItems(items, -1) { dialog, which ->
-                Toast.makeText(
-                    applicationContext, items[which] + " dipilih", Toast.LENGTH_SHORT
-                ).show()
-                newStatus = items[which]
-            }
-
-            builder.setPositiveButton("Pilih") { dialog: DialogInterface, which: Int ->
-
-            }
-
-            builder.setNeutralButton("Batal") { dialog, which ->
-                dialog.cancel()
-            }
-
-            val mDialog = builder.create()
-            mDialog.show()
-
-
-            mDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                api.updatePembelianAdmin(sp.getPembelian()!!.id, newStatus).enqueue(object :
-                    Callback<SubmitModel> {
-                    override fun onResponse(
-                        call: Call<SubmitModel>,
-                        response: Response<SubmitModel>
-                    ) {
-                        Toast.makeText(
-                            this@DetailRiwayatPemesananActivity,
-                            "Status berhasil diubah",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                    override fun onFailure(call: Call<SubmitModel>, t: Throwable) {
-                        Toast.makeText(
-                            this@DetailRiwayatPemesananActivity,
-                            "Status gagal diubah",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                })
-                mDialog.dismiss()
-            }
-        }
     }
+
 
     private fun customer() {
         api.getCustomer(sp.getPembelian()!!.ID_User).enqueue(object : Callback<List<User>> {
@@ -122,7 +69,7 @@ class DetailRiwayatPemesananActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                println("Gagal: "+t.message)
+                println("Gagal: " + t.message)
             }
 
         })
@@ -130,13 +77,13 @@ class DetailRiwayatPemesananActivity : AppCompatActivity() {
 
 
     private fun setupView() {
-        val layoutManager = LinearLayoutManager(this@DetailRiwayatPemesananActivity)
+        val layoutManager = LinearLayoutManager(this@DetailRiwayatPemesananCustomerActivity)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         rv_detail_riwayat = findViewById(R.id.rv_detail_riwayat)
         rv_detail_riwayat.layoutManager = layoutManager
 
-        adapterRiwayat = AdapterRiwayat(this@DetailRiwayatPemesananActivity, arrayListOf())
+        adapterRiwayat = AdapterRiwayat(this@DetailRiwayatPemesananCustomerActivity, arrayListOf())
 
         rv_detail_riwayat.adapter = adapterRiwayat
     }

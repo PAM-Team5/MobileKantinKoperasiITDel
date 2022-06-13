@@ -16,6 +16,9 @@
         android:theme="@style/Theme.KantinKorperasiITDel"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.DetailRiwayatPemesananCustomerActivity"
+            android:exported="false" />
+        <activity
             android:name=".adapter.AdapterRiwayat"
             android:exported="false" />
         <activity

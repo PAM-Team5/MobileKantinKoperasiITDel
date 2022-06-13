@@ -54,6 +54,7 @@ class MainAdminKantinActivity : AppCompatActivity() {
 
         btnAdminProfil = findViewById(R.id.btnAdminProfil)
         btnAdminProfil.setOnClickListener {
+            sp.setStatusLogin(false)
             val intent =  Intent(this@MainAdminKantinActivity, MasukActivity::class.java)
             startActivity(intent)
         }

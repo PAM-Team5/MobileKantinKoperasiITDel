@@ -150,7 +150,6 @@ class KeranjangFragment : Fragment() {
                                     call: Call<ResponModel>,
                                     response: Response<ResponModel>
                                 ) {
-                                    val beli = sp.getPembelian()!!
                                     for (item in listPesanUserBelumBayar) {
                                         ApiConfig.instanceRetrofit.bayarPemesanan(
                                             item.id,
