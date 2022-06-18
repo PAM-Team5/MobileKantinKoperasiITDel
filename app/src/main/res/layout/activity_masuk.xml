@@ -51,6 +51,16 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/abu"/>
 
+        <TextView
+            android:id="@+id/tv_kembali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100px"
+            android:gravity="center"
+            android:text="Kembali ke halaman utama"
+            android:textColor="@color/blue"
+            android:textSize="16dp" />
+
     </LinearLayout>
 
 </RelativeLayout>
